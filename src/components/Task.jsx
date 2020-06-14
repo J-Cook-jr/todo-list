@@ -20,7 +20,7 @@ export default class Task extends Component {
                         </span>
                     ) : (
                             <span role="img" aria-label="Incomplete">
-                                ⤴️
+                                🔄
                             </span>
                         )}
                 </button>
@@ -29,7 +29,7 @@ export default class Task extends Component {
                     className="Task__button Task__button--delete"
                 >
                     <span role="img" aria-label="Delete">
-                        💩
+                    ❌
           </span>
                 </button>
             </div>
