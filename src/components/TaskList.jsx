@@ -1,37 +1,46 @@
 import React, { Component } from 'react';
-import './Task.css';
+import Task from './Task';
 
-export default class Task extends Component {
+export default class TaskList extends Component {
     render() {
-        const { task, toggleCompleteStatus, deleteTask } = this.props;
-
         return (
-            <div className="Task">
-                <div className={`Task__name ${task.complete ? 'is-complete' : ''}`}>
-                    {task.name}
-                </div>
-                <button
-                    onClick={toggleCompleteStatus}
-                    className="Task__button Task__button--toggle"
-                >
-                    {!task.complete ? (
-                        <span role="img" aria-label="Complete">
-                            ✅
-                        </span>
-                    ) : (
-                            <span role="img" aria-label="Incomplete">
-                                ⤴️
-                            </span>
-                        )}
-                </button>
-                <button
-                    onClick={deleteTask}
-                    className="Task__button Task__button--delete"
-                >
-                    <span role="img" aria-label="Delete">
-                        💩
-          </span>
-                </button>
+            <div>
+                <h2 className="TaskList__title">Incomplete Tasks</h2>
+                {this.props.tasks.map((task, i) => {
+                    if (!task.complete) {
+                        return (
+                            <Task
+                                task={task}
+                                key={i}
+                                toggleCompleteStatus={() => {
+                                    this.props.toggleCompleteStatus(i);
+                                }}
+                                deleteTask={() => {
+                                    this.props.deleteTask(i);
+                                }}
+                            />
+                        );
+                    }
+                    return '';
+                })}
+                <h2 className="TaskList__title">Complete Tasks</h2>
+                {this.props.tasks.map((task, i) => {
+                    if (task.complete) {
+                        return (
+                            <Task
+                                task={task}
+                                key={i}
+                                toggleCompleteStatus={() => {
+                                    this.props.toggleCompleteStatus(i);
+                                }}
+                                deleteTask={() => {
+                                    this.props.deleteTask(i);
+                                }}
+                            />
+                        );
+                    }
+                    return '';
+                })}
             </div>
         );
     }
