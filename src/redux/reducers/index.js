@@ -1,5 +1,10 @@
 const initialState = {
-    tasks: [],
+    tasks: [
+        {
+            name: 'Test Redux Task',
+            completed: false,
+        }
+    ],
 }
 
 function todoReducer(state = initialState, action){
