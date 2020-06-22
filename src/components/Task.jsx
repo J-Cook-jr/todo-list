@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Task.css';
 
+
 export default class Task extends Component {
     render() {
         const { task, toggleCompleteStatus, deleteTask } = this.props;
@@ -29,7 +30,7 @@ export default class Task extends Component {
                     className="Task__button Task__button--delete"
                 >
                     <span role="img" aria-label="Delete">
-                    ❌
+                        ❌
           </span>
                 </button>
             </div>
