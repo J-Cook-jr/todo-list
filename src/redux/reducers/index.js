@@ -7,9 +7,24 @@ const initialState = {
     ],
 }
 
-function todoReducer(state = initialState, action){
+function todoReducer(state = initialState, action) {
+    switch (action.type) {
+        case 'ADD_TODO':
+            const newState = {
+                ...state,
+                todos: [
+                    ...state.todos,
+                    {
+                        name: action.content,
+                        completed: false,
+                    }
+                ]
+            }
+            return newState
 
-    return state;
+        default:
+            return state;
+    }
 }
 
 export default todoReducer;
