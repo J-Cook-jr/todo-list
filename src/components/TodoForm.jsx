@@ -27,7 +27,7 @@ export default class TodoForm extends Component {
                 <div className="form-field">
                     <label htmlFor="todo" className="form-label">
                         Enter A Task Name
-          </label>
+                    </label>
                     <input
                         type="text"
                         id="todo"
@@ -40,7 +40,7 @@ export default class TodoForm extends Component {
                     />
                     <button type="submit" className="form-button">
                         Add
-          </button>
+                    </button>
                 </div>
             </form>
         );
