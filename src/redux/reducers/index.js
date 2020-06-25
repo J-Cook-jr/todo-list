@@ -1,60 +1,10 @@
-const initialState = {
-    tasks: [
-        {
-            name: 'Test Redux Task',
-            completed: false,
-        }
-    ],
-}
+import { combineReducers } from 'redux';
+import todoReducer from './todoReducer'
+import visibilityReducer from './visibilityReducer';
 
-function todoReducer(state = initialState, action) {
-    switch (action.type) {
-        case 'ADD_TODO':
-            return {
-                ...state,
-                tasks: [
-                    ...state.tasks,
-                    {
-                        name: action.content,
-                        completed: false,
-                    }
-                ]
-            }
+const rootReducer = combineReducers({
+    todoState: todoReducer,
+    visibility: visibilityReducer
+});
 
-
-        case 'TOGGLE_TODO':
-            const newTask = { ...state.tasks[action.index] };
-
-            newTask.complete = !newTask.complete;
-
-            const newTasks = state.tasks.map((task, index) => {
-                if (index === action.index) {
-                    return newTask
-                }
-                return task;
-
-            });
-
-            return {
-                ...state,
-                tasks: newTasks,
-            }
-
-        case 'DELETE_TODO':
-            const remainingTasks = state.tasks.filter((task, index)=> {
-                if(index !== action.index) {
-                    return true 
-                }
-                return false;
-            })
-            return {
-                ...state,
-                tasks: remainingTasks
-            }
-
-        default:
-            return state;
-    }
-}
-
-export default todoReducer;
+export default rootReducer;

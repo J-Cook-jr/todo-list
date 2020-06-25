@@ -10,6 +10,9 @@ class TaskList extends Component {
     render() {
         return (
             <div>
+                <button >Incomplete</button>
+                <button >Complete</button>
+
                 <h2 className="TaskList__title">Incomplete Tasks</h2>
                 {this.props.tasks.map((task, i) => {
                     if (!task.complete) {
@@ -53,7 +56,7 @@ class TaskList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        tasks: state.tasks
+        tasks: state.todoState.tasks
     }
 }
 const mapDispatchToProps = {
